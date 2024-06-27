@@ -3,10 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Career from "./routes/Career";
 import Education from "./routes/Education";
+import Projects from "./routes/Projects";
 import Navbar from './components/Navbar';
 import { useEffect, useState } from 'react';
-import sunIcon from './icons/generic-sun-icon.png';
-import moonIcon from './icons/generic-moon-icon.png';
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -34,6 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/career" element={<Career />} />
         <Route path="/education" element={<Education />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </div>
   );
