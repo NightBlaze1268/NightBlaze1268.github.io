@@ -22,11 +22,6 @@ const Card = ({ title, children, imageUrl }) => {
           </Link>
         </button>
         <button className="bg-gray-500 text-gray-100 border font-bold p-3 rounded-lg dark:bg-gray-900">
-          <Link to="/education" className="w-full h-full block text-gray-100 dark:text-gray-100">
-            See my projects
-          </Link>
-        </button>
-        <button className="bg-gray-500 text-gray-100 border font-bold p-3 rounded-lg dark:bg-gray-900">
           <Link to="/career" className="w-full h-full block text-gray-100 dark:text-gray-100">
             Follow my career!
           </Link>
