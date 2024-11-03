@@ -44,9 +44,6 @@ const Navbar = ({ darkMode, toggleDisplayMode }) => {
           <button className={`${baseButton} ${getLinkClass('/education')}`}>
             <Link to="/education" className={`${baseButtonLink}`}>Education</Link>
           </button>
-          <button className={`${baseButton} ${getLinkClass('/projects')}`}>
-            <Link to="/projects" className={`${baseButtonLink}`}>Projects</Link>
-          </button>
         </div>
         <div className="flex items-center">
           <img
