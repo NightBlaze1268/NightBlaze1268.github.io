@@ -36,3 +36,56 @@
     transform: rotate(360deg);
   }
 }
+
+/* Default Light Mode */
+:root {
+  --card-bg: white;
+  --text: black;
+  --bg: #f3f4f6;
+  --border: #e5e7eb;
+
+  --navbar-btn-bg: #f3f4f6;
+  --btn-bg: #6b7280;
+  --text-title: #111827;
+  --text-normal: #374151;
+}
+
+/* Dark Mode */
+.dark {
+  --card-bg: #1f2937;
+  --text: white;
+  --bg: #111827;
+  --border: #4a5568;
+
+  --navbar-button-bg:#111827;
+  --btn-bg: #111827;
+  --text-title: #f3f4f6;
+  --text-normal: #d1d5db;
+}
+
+/* Cyberpunk Mode */
+.cyberpunk {
+  --bg: #bf91ea;
+  --text: #0ff;
+  --card: #222;
+  --border: #ff0;
+}
+
+/* Solarized Mode */
+.solarized {
+  --bg: #002b36;
+  --text: #839496;
+  --card: #073642;
+  --border: #586e75;
+}
+
+/* Apply Variables */
+.bg-card-primary { background-color: var(--card-bg); }
+.bg-primary { background-color: var(--bg); }
+.text-primary { color: var(--text); }
+.border-primary { border-color: var(--border); }
+.text-title { color: var(--text-title); }
+.text-normal { color: var(--text-normal); }
+.btn-bg-primary { background-color: var(--btn-bg); }
+.navbar-btn-bg {background-color: var(--navbar-btn-bg); }
+

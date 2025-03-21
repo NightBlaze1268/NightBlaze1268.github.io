@@ -7,29 +7,18 @@ import Projects from "./routes/Projects";
 import Navbar from './components/Navbar';
 import { useEffect, useState } from 'react';
 
-
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
-    let savedMode = localStorage.getItem("displayMode");
-    if (!savedMode) {
-      savedMode = "light";
-      setDarkMode(false);
-      localStorage.setItem("displayMode", savedMode);
-    }
-    setDarkMode(savedMode === 'dark');
-  }, []);
-
-  const toggleDisplayMode = () => {
-    const newMode = !darkMode ? "dark" : "light";
-    setDarkMode(!darkMode);
-    localStorage.setItem("displayMode", newMode);
-  };
+    // Apply the current theme as a class to the html element
+    document.documentElement.className = theme; // This applies the theme class to the <html> element
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
-    <div className={`${darkMode ? "dark" : ""} flex flex-col h-screen`}>
-      <Navbar darkMode={darkMode} toggleDisplayMode={toggleDisplayMode}/>
+    <div className="flex flex-col h-screen">
+      <Navbar currentTheme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/career" element={<Career />} />
