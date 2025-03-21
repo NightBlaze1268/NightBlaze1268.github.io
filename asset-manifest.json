@@ -1,20 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.cdad563b.css",
-    "main.js": "/static/js/main.b8fbc533.js",
+    "main.css": "/static/css/main.2352761d.css",
+    "main.js": "/static/js/main.b32c1d16.js",
     "static/js/453.e81e1307.chunk.js": "/static/js/453.e81e1307.chunk.js",
-    "static/media/grad-photo-in-front-of-uofl.jpg": "/static/media/grad-photo-in-front-of-uofl.4504c7f0a7f4493275fc.jpg",
+    "static/media/pic_of_me.jpg": "/static/media/pic_of_me.54ebe4a398694a523135.jpg",
     "static/media/rick-studios-logo-removebg-preview.png": "/static/media/rick-studios-logo-removebg-preview.2dd49e16259d45d8c442.png",
     "static/media/light-rick-studios-removebg-preview.png": "/static/media/light-rick-studios-removebg-preview.72c0f4b4a5aea1e18011.png",
-    "static/media/generic-sun-icon.png": "/static/media/generic-sun-icon.4e20551e9ca7b90218d2.png",
-    "static/media/generic-moon-icon.png": "/static/media/generic-moon-icon.3f3787cf830c2a8b1355.png",
     "index.html": "/index.html",
-    "main.cdad563b.css.map": "/static/css/main.cdad563b.css.map",
-    "main.b8fbc533.js.map": "/static/js/main.b8fbc533.js.map",
+    "main.2352761d.css.map": "/static/css/main.2352761d.css.map",
+    "main.b32c1d16.js.map": "/static/js/main.b32c1d16.js.map",
     "453.e81e1307.chunk.js.map": "/static/js/453.e81e1307.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cdad563b.css",
-    "static/js/main.b8fbc533.js"
+    "static/css/main.2352761d.css",
+    "static/js/main.b32c1d16.js"
   ]
 }
