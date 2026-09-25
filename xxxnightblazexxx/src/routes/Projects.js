@@ -1,79 +1,144 @@
-import React from 'react';
-import ProjectCard from '../components/ProjectCard';
+import { useLayoutEffect, useRef, useState } from "react";
+import ProjectCard from "../components/ProjectCard";
+import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
+import { CodeIcon } from "../components/Icons";
+
+const projects = [
+  {
+    cardTitle: "Project portfolio website",
+    techStack: ["React", "Tailwind", "JavaScript"],
+    cardDescription:
+      "This project serves as an outlet for me to portray my skills, education, certifications, and any projects that I am working on.",
+    cardCategory: "Current",
+    projectURL: "https://github.com/NightBlaze1268/NightBlaze1268.github.io",
+    projectLink: "Project Portfolio Website",
+  },
+  {
+    cardTitle: "SMX stats scraper",
+    techStack: ["Python", "BeautifulSoup", "SQL"],
+    cardDescription:
+      "One of the things I love doing is watching professional Motocross and Supercross, and loving statistics I thought it very fitting to create a stats scraper that will be used to generate statistics about the seasons on a website I am working on.",
+    cardCategory: "Current",
+    projectURL: "https://github.com/NightBlaze1268/smx-stats-scraper",
+    projectLink: "SMX Stats Scraper",
+  },
+  {
+    cardTitle: "SMX stats website",
+    techStack: ["React", "Tailwind", "CSS", "SQL", "JavaScript", "DataTables"],
+    cardDescription:
+      "This website will serve as a statistics display for the stats scraper I am wrapping up currently.",
+    cardCategory: "Future",
+  },
+  {
+    cardTitle: "Calendar App",
+    techStack: ["Kotlin", "Swift"],
+    cardDescription:
+      "One of the things I have wanted to do for a while is make my own app on the iOS and Android platforms, and I have always found that the calendar apps that are available are either too pricey or just lack the features I am looking for, so I am going to be building my own version.",
+    cardCategory: "Future",
+  },
+  {
+    cardTitle: "ChatBot",
+    techStack: ["Python", "Artificial Intelligence"],
+    cardDescription: "This chatbot will serve as an answering machine for myself. This will ideally be hosted on my website.",
+    cardCategory: "Future",
+  },
+  {
+    cardTitle: "KIPDA Android App",
+    techStack: ["Kotlin", "Google Firebase"],
+    cardDescription:
+      "My Capstone project was to create an Android application that would help an organization better outreach to their users. This project was essentially finished but there were additional features that myself or my team could not get wrapped up and thus is still being worked on by other teams before being put onto the Play Store. I cannot provide any code for this project or answer any further questions related to it.",
+    cardCategory: "Past",
+    note: "Code not publicly available",
+  },
+  {
+    cardTitle: "Raspberry PI Artificial Intelligence Ring Camera",
+    techStack: ["Python", "Raspberry Pi", "Electrical"],
+    cardDescription:
+      "This project utilized a Raspberry PI 3 board, camera, motion sensor, and artificial intelligence library. When the motion sensor would detect motion, the camera would turn on and run the AI facial recognition software to determine if you should have access to the house or not. Ideally this would be combined with a lock and be made smaller with better manufactured chips and components to control access to your house utilizing AI.",
+    cardCategory: "Past",
+  },
+];
+
+const filters = ["All", "Current", "Future", "Past"];
+
+function FilterTabs({ active, onChange }) {
+  const refs = useRef({});
+  const [indicator, setIndicator] = useState(null);
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const el = refs.current[active];
+      if (el) setIndicator({ left: el.offsetLeft, width: el.offsetWidth });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    document.fonts?.ready.then(measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [active]);
+
+  return (
+    <div role="tablist" aria-label="Filter projects" className="glass relative inline-flex rounded-2xl p-1.5">
+      {indicator && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-1.5 left-0 rounded-xl bg-gradient-to-r from-accent via-accent-2 to-accent-3 shadow-glow transition-all duration-500 ease-out-expo"
+          style={{ transform: `translateX(${indicator.left}px)`, width: indicator.width }}
+        />
+      )}
+      {filters.map((filter) => {
+        const count = filter === "All" ? projects.length : projects.filter((p) => p.cardCategory === filter).length;
+        const selected = filter === active;
+        return (
+          <button
+            key={filter}
+            ref={(el) => (refs.current[filter] = el)}
+            type="button"
+            role="tab"
+            aria-selected={selected}
+            onClick={() => onChange(filter)}
+            className={`relative flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors duration-300 sm:px-5 ${
+              selected ? "text-page" : "text-muted hover:text-ink"
+            }`}
+          >
+            {filter}
+            <span
+              className={`hidden rounded-md px-1.5 text-[11px] tabular-nums transition-colors duration-300 sm:inline-block ${
+                selected ? "bg-page/25" : "bg-line/10"
+              }`}
+            >
+              {count}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Projects() {
+  const [filter, setFilter] = useState("All");
+  const visible = filter === "All" ? projects : projects.filter((p) => p.cardCategory === filter);
+
   return (
-    <div className='bg-gray-100 dark:bg-gray-900 min-h-max'>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
-            View my project portfolio!
-          </h2>
-          <p className="mt-2 text-lg leading-8 text-gray-600">
-            This page is still a work in progress and is constantly being
-          </p>
-        </div>
-        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          <ProjectCard 
-            id={1}
-            cardTitle={"Project portfolio website"}
-            cardSubtitle={"React, Tailwind, Javascript"}
-            cardDescription={"This project serves as an outlet for me to portray my skills, education, certifications, and any projects that I am working on"}
-            cardCategory={"Current"}
-            projectURL={"https://github.com/NightBlaze1268/NightBlaze1268.github.io"}
-            projectLink={"Project Portfolio Website"}>
-          </ProjectCard>
-          <ProjectCard 
-            id={2}
-            cardTitle={"SMX stats scraper"}
-            cardSubtitle={"Python, Beautifulsoup, SQL"}
-            cardDescription={"One of the things I love doing is watching professional Motocross and Supercross, and loving statistics I thought it very fitting to create a stats scraper that will be used to generate statistics about the seasons on a website I am working."}
-            cardCategory={"Current"}
-            projectURL={"https://github.com/NightBlaze1268/smx-stats-scraper"}
-            projectLink={"SMX Stats Scraper"}>
-          </ProjectCard>
-          <ProjectCard 
-            id={3}
-            cardTitle={"SMX stats website"}
-            cardSubtitle={"React, Tailwind, CSS, SQL, Javascript, DataTables"}
-            cardDescription={"This website will serve as a statistics display for the stats scraper I am wrapping up currently."}
-            cardCategory={"Future"}
-            certFileUrl={"../degrees-certs/SecurityPlus Logo Certified CE.jpg"}
-            projectLink={"CompTIA Security+ Certification"}>
-          </ProjectCard>
-          <ProjectCard 
-            id={4}
-            cardTitle={"Calendar App"}
-            cardSubtitle={"Kotlin, Swift"}
-            cardDescription={"One of the things I have wanted to do for a while is make my own app on the iOS and Android platforms, and I have always found that the calendar apps that are available are either to pricey or just lack the features I am looking for, so I am going to be building my own version."}
-            cardCategory={"Future"}>
-          </ProjectCard>
-          <ProjectCard 
-            id={5}
-            cardTitle={"ChatBot"}
-            cardSubtitle={"Python, Artificial Intelligence"}
-            cardDescription={"This chatbot will serve as an answering machine for myself. This will ideally be hosted on my website."}
-            cardCategory={"Future"}>
-          </ProjectCard>
-          <ProjectCard 
-            id={6}
-            cardTitle={"KIPDA Android App"}
-            cardSubtitle={"Kotlin, Google Firebase"}
-            cardDescription={"My Capstone project was to create an Android application that would help an organization better outreach to their users. This project was essentially finished but there were additional features that myself or my team could not get wrapped up and thus is still being worked on by other teams before being put onto the Play Store. I cannot provide any code for this project or answer any further questions related to it."}
-            cardCategory={"Past"}>
-          </ProjectCard>
-          <ProjectCard
-            id={7}
-            cardTitle={"Raspberry PI Artificial Intelligence Ring Camera"}
-            cardSubtitle={"Python, Raspberry PI, Electrical"}
-            cardDescription={"This project utilized a Raspberry PI 3 board, camera, motion sensor, and aritificial intelligence library. When the motion sensor would detect motion, the camera would turn on and run the AI facial recognition software to determine if you should have access to the house or not. Ideally this would be combined with a lock and be made smaller with better manufactured chips and components to control access to your house utilizing AI."}
-            cardCategory={"Past"}
-            projectURL={"https://nightblaze1268.github.io/"}
-            projectLink={"Coming Soon..."}>
-            </ProjectCard>
-        </div>
+    <div className="mx-auto max-w-6xl px-6 pt-36 sm:pt-44">
+      <SectionHeading as="h1" eyebrow="Projects" icon={CodeIcon} title="View my project" highlight="portfolio.">
+        What I'm building now, what's next, and what I've shipped. This page is still a work in progress and is
+        constantly being updated.
+      </SectionHeading>
+
+      <Reveal delay={220} className="mt-12 flex justify-center">
+        <FilterTabs active={filter} onChange={setFilter} />
+      </Reveal>
+
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {visible.map((project, i) => (
+          // Keyed by filter so cards re-animate in whenever the filter changes
+          <Reveal key={`${filter}-${project.cardTitle}`} delay={(i % 3) * 90} className="h-full">
+            <ProjectCard {...project} />
+          </Reveal>
+        ))}
       </div>
     </div>
   );
 }
-  
