@@ -1,18 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.2352761d.css",
-    "main.js": "/static/js/main.b32c1d16.js",
+    "main.css": "/static/css/main.e6e822f4.css",
+    "main.js": "/static/js/main.5d806ea6.js",
     "static/js/453.e81e1307.chunk.js": "/static/js/453.e81e1307.chunk.js",
-    "static/media/pic_of_me.jpg": "/static/media/pic_of_me.54ebe4a398694a523135.jpg",
+    "static/media/capstone_showcase_award.jpg": "/static/media/capstone_showcase_award.f4314c54a7254fd17748.jpg",
+    "static/media/grad-photo-web.jpg": "/static/media/grad-photo-web.e3b8af3d86c50f51cddc.jpg",
     "static/media/rick-studios-logo-removebg-preview.png": "/static/media/rick-studios-logo-removebg-preview.2dd49e16259d45d8c442.png",
     "static/media/light-rick-studios-removebg-preview.png": "/static/media/light-rick-studios-removebg-preview.72c0f4b4a5aea1e18011.png",
+    "static/media/SecurityPlus Logo Certified CE.jpg": "/static/media/SecurityPlus Logo Certified CE.16f4dba7f404ee011ca9.jpg",
+    "static/media/Green Belt Badge.png": "/static/media/Green Belt Badge.0a26d25bad6d215ccc19.png",
+    "static/media/pic_of_me-web.jpg": "/static/media/pic_of_me-web.ea79a4df2bf62d4ec9c7.jpg",
     "index.html": "/index.html",
-    "main.2352761d.css.map": "/static/css/main.2352761d.css.map",
-    "main.b32c1d16.js.map": "/static/js/main.b32c1d16.js.map",
+    "main.e6e822f4.css.map": "/static/css/main.e6e822f4.css.map",
+    "main.5d806ea6.js.map": "/static/js/main.5d806ea6.js.map",
     "453.e81e1307.chunk.js.map": "/static/js/453.e81e1307.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2352761d.css",
-    "static/js/main.b32c1d16.js"
+    "static/css/main.e6e822f4.css",
+    "static/js/main.5d806ea6.js"
   ]
 }
