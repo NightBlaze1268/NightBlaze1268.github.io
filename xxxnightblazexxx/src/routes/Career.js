@@ -5,10 +5,24 @@ import { BriefcaseIcon } from "../components/Icons";
 
 const positions = [
   {
-    title: "Fort Knox Human Resources Command",
-    positionDate: "May 2024 – Present",
-    positionTitle: "Computer Engineer",
+    title: "Vista Innovative Solutions, LLC",
+    positionDate: "September 2025 – Present",
+    positionTitle: "Junior Software Engineer",
     current: true,
+    summary:
+      "I support data analysis, application development, and modernization initiatives in a full-time, remote role at Vista Innovative Solutions, LLC.",
+    responsibilities: [
+      "Perform SQL analysis to support data and reporting needs.",
+      "Develop and support solutions using Microsoft Power Platform.",
+      "Map SQL logic and convert it to Python to support the transition of data into the Army Vantage platform powered by Palantir.",
+      "Helped migrate on-premises mainframe code to cloud architecture in Microsoft Azure.",
+      "Contributed to a Drupal project.",
+    ],
+  },
+  {
+    title: "Fort Knox Human Resources Command",
+    positionDate: "May 2024 – September 2025",
+    positionTitle: "Computer Engineer",
     summary:
       "As a Computer Engineer I serve as the SME for development work, helping to find and resolve bugs, and assist with priority categorization.",
     responsibilities: [
@@ -68,7 +82,7 @@ const Career = () => {
   return (
     <div className="mx-auto max-w-5xl px-6 pt-36 sm:pt-44">
       <SectionHeading as="h1" eyebrow="Career" icon={BriefcaseIcon} title="Follow my" highlight="career.">
-        Below you will find information about all of my positions from the last 5 years.
+        Explore my experience in software development, data analysis, and cloud modernization.
       </SectionHeading>
 
       <div ref={timelineRef} className="relative mt-20">
@@ -83,7 +97,7 @@ const Career = () => {
 
         <ol className="space-y-10">
           {positions.map(({ summary, ...position }, i) => (
-            <CareerCard key={position.positionTitle} {...position} delay={i * 80}>
+            <CareerCard key={`${position.title}-${position.positionTitle}`} {...position} delay={i * 80}>
               {summary}
             </CareerCard>
           ))}
